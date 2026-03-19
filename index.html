@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AHS Compliance Consulting — Essential Compliance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal:    #3a3a3a;
+      --charcoal-lt: #555555;
+      --cyan:        #4BBFD6;
+      --cyan-dark:   #38a8c2;
+      --cyan-light:  #e6f7fb;
+      --cyan-mid:    #b8eaf3;
+      --white:       #ffffff;
+      --off-white:   #f8fafb;
+      --border:      #e2e8ea;
+      --muted:       #787878;
+      --gray-light:  #6b7280;
+      --gray-bg:     #f0f1f3;
+      --grey-light:  #f2f2f2;
+      --grey-mid:    #d6d6d6;
+      --text:        #3a3a3a;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #c8cdd0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 24px 16px;
+      color: var(--text);
+    }
+
+    /* ── A4 page shell — desktop only ── */
+    .page-a4 {
+      width: 210mm;
+      height: 297mm;
+      background: var(--grey-light);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12mm;
+      flex-shrink: 0;
+    }
+
+    .flyer {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(58,58,58,0.10), 0 1px 4px rgba(75,191,214,0.08);
+      border: 1.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    /* ── Top bar ── */
+    .top-bar {
+      background: var(--grey-mid);
+      padding: 15px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .top-bar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-name {
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+    }
+    .eyebrow-tag {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      background: rgba(75,191,214,0.12);
+      border: 1px solid rgba(75,191,214,0.3);
+      border-radius: 20px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+
+    /* ── Cyan accent stripe ── */
+    .accent-stripe {
+      height: 3px;
+      background: var(--cyan);
+      flex-shrink: 0;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 20px 24px 16px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1.5px solid var(--border);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1;
+      min-width: 200px;
+    }
+    .hero-text h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 7px;
+    }
+    .hero-text h1 span {
+      color: var(--cyan);
+    }
+    .subtitle {
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 374px;
+      font-weight: 400;
+    }
+    .key-points {
+      list-style: none;
+      font-size: 12px;
+      padding: 10px 0 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .key-points li {
+      color: var(--charcoal-lt);
+      line-height: 1.4;
+    }
+
+    /* Price panel */
+    .price-panel {
+      flex-shrink: 0;
+      background: var(--charcoal);
+      border-radius: 10px;
+      padding: 14px 20px;
+      border: 1.5px solid var(--grey-mid);
+      text-align: center;
+      min-width: 110px;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-panel::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--cyan);
+    }
+    .price-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 3px;
+    }
+    .price {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .price span {
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--cyan);
+    }
+    .per {
+      font-size: 10px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Includes ── */
+    .includes {
+      padding: 16px 24px;
+      border-bottom: 1.5px solid var(--border);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .includes h2 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .feature-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      flex: 1;
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .feature-list li:nth-child(even) {
+      background: var(--grey-light);
+      border-radius: 6px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    .icon-wrap {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--cyan-light);
+      border: 1.5px solid var(--cyan-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .icon-wrap svg {
+      width: 11px;
+      height: 11px;
+      color: var(--cyan-dark);
+    }
+    .feature-content strong {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 2px;
+    }
+    .feature-content p {
+      font-size: 11.5px;
+      color: var(--gray-light);
+      line-height: 1.45;
+    }
+
+    /* ── Footer band ── */
+    .footer-band {
+      background: var(--off-white);
+      padding: 16px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: stretch;
+      border-top: 1.5px solid var(--border);
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+    .ideal-for {
+      flex: 1;
+      min-width: 180px;
+    }
+    .ideal-for h3 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .ideal-for p {
+      font-size: 12px;
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+    .divider {
+      width: 1.5px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .cta-box {
+      flex-shrink: 0;
+      width: 190px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .cta-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+    .cta-text {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 4px;
+      background: var(--cyan);
+      color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.15s;
+      align-self: flex-start;
+    }
+    .cta-button:hover { background: var(--cyan-dark); }
+    .cta-button svg { width: 12px; height: 12px; }
+
+    /* ── Mobile: fluid layout, no fixed A4 box ── */
+    @media (max-width: 680px) {
+      body {
+        padding: 0;
+        background: var(--white);
+        align-items: stretch;
+      }
+
+      .page-a4 {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        padding: 0;
+        box-shadow: none;
+        background: var(--white);
+        align-items: flex-start;
+      }
+
+      .flyer {
+        height: auto;
+      }
+
+      .card {
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        height: auto;
+      }
+
+      .top-bar {
+        padding: 14px 16px;
+        gap: 8px;
+      }
+
+      .brand-name {
+        font-size: 20px;
+      }
+
+      .hero {
+        padding: 16px 16px 14px;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .hero-text {
+        min-width: unset;
+      }
+
+      .hero-text h1 {
+        font-size: 22px;
+      }
+
+      .subtitle {
+        font-size: 13px;
+        max-width: 100%;
+      }
+
+      .key-points {
+        font-size: 13px;
+        padding-top: 10px;
+      }
+
+      .price-panel {
+        align-self: flex-start;
+        min-width: 100px;
+      }
+
+      .includes {
+        padding: 16px 16px;
+        flex: none;
+        overflow: visible;
+      }
+
+      .feature-list {
+        flex: none;
+      }
+
+      .feature-list li {
+        flex: none;
+        padding: 12px 0;
+      }
+
+      .feature-content strong {
+        font-size: 13px;
+      }
+
+      .feature-content p {
+        font-size: 12px;
+      }
+
+      .footer-band {
+        padding: 16px 16px;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .divider {
+        width: 100%;
+        height: 1.5px;
+      }
+
+      .cta-box {
+        width: 100%;
+      }
+
+      .cta-button {
+        width: 100%;
+        justify-content: center;
+        font-size: 13px;
+        padding: 11px 16px;
+      }
+    }
+
+    /* ── Print: true A4 ── */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+        margin: 0;
+      }
+      .page-a4 {
+        width: 210mm;
+        height: 297mm;
+        box-shadow: none;
+        padding: 12mm;
+        margin: 0;
+      }
+      .card {
+        height: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-a4">
+    <main class="flyer">
+      <div class="card">
+
+        <!-- Top bar with AHS branding -->
+        <div class="top-bar">
+          <div class="top-bar-brand">
+            <div class="brand-name">AHS <span style="color: var(--cyan);">Compliance Consulting Ltd</span></div>
+          </div>
+          <div class="eyebrow-tag">Retained H&amp;S Support</div>
+        </div>
+
+        <div class="accent-stripe"></div>
+
+        <!-- Hero -->
+        <header class="hero">
+          <div class="hero-text">
+            <h1>Essential <span>Compliance</span></h1>
+            <p class="subtitle">Practical, ongoing support for small to medium sized enterprises who need, competent health &amp; safety support. </p>
+            <ul class="key-points">
+              <li>✔ Act as your competent person for tenders and SSiP</li>
+              <li>✔ Support with your legal duties</li>
+              <li>✔ Give you expert advice when you need it</li>
+            </ul>
+          </div>
+
+
+          <div class="price-panel">
+            <div class="price-label">From</div>
+            <div class="price"><span>£</span>150</div>
+            <div class="per">per month</div>
+          </div>
+        </header>
+
+        <!-- What's included -->
+        <section class="includes">
+          <h2>What's included</h2>
+          <ul class="feature-list">
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-content">
+                <strong>Competent Person Service</strong>
+                <p>Support aligned with Regulation 7 of the Management of Health and Safety at Work Regulations 1999, providing your business with access to a named, competent health & safety advisor.
+                    We act as your external safety resource, offering practical guidance to help you meet your legal duties, manage risk, and maintain compliance across your operations.</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-content">
+                <strong>Telephone &amp; Email Advice</strong>
+                <p>Ongoing access to professional health & safety advice via telephone and email, providing clear, practical guidance when issues arise.
+                  Whether you need reassurance, second opinions, or direction on specific situations, support is available on a fair-use basis to help you make informed decisions quickly.</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-content">
+                <strong>Annual H&amp;S Policy Review</strong>
+                <p>Annual review of your health & safety policy to ensure it remains up to date, relevant to your activities, and aligned with current legislation and best practice.
+                  Recommendations will be provided where improvements or updates are required.</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-content">
+                <strong>Basic Risk Assessment Review</strong>
+                <p>Review and feedback on your existing risk assessments to ensure they are suitable, sufficient, and reflective of your actual working activities.
+                  Practical recommendations provided to improve clarity, control measures, and compliance where required.
+                  (Creation of new risk assessments available as an additional service.)</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="feature-content">
+                <strong>Legal &amp; Regulatory Updates</strong>
+                <p>Ongoing updates on relevant changes to health & safety legislation and industry guidance that may impact your business.
+                  Key changes are communicated in a clear and practical way, helping you understand what actions (if any) are required..</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Footer band -->
+        <div class="footer-band">
+          <div class="ideal-for">
+            <h3>Ideal for</h3>
+            <p>Small to medium sized enterprises and growing businesses that need straightforward compliance support without the high cost of a full-time in-house Health and Safety resource.</p>
+          </div>
+          <div class="divider"></div>
+          <div class="cta-box">
+            <p class="cta-title">AHS Compliance Consulting Ltd</p>
+            <p class="cta-text">Professional retained support with a clear monthly cost.</p>
+            <a class="cta-button" href="https://archersafety.co.uk">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Visit Web Site
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>
